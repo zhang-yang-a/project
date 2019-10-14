@@ -318,20 +318,28 @@
 }
 
 .scroll-content {
-    width: 100%;
+    
+    margin: 0 auto;
     position: relative;
 }
 
-.scroll-item {
-    width: 100%;
-    position: absolute;
-}
-
-.scroll-item-img {
-    width: 100%;
+.scroll-content li{
+    width: 1200px;
     height: 460px;
+    margin: 0 auto;
+    float: left;
+    position: absolute;
+    
+}
+.scroll-content li a{
+    display: block;
+    float: left;
+}
+.scroll-content li a img{
     display: block;
 }
+
+
 
 /*  轮播图锚点 */
 .scroll-btn {
@@ -441,7 +449,7 @@
 /* 精选区域小样图 */
 .list {
     width: 1200px;
-    height: 444px;
+    height: px;
     margin: 0 auto;
 
 }
@@ -561,20 +569,51 @@
 }
 
 .big-box {
+    width: 1200px;
+    height: 400px;
     position: relative;
 }
-
-.big-box-img {
+.big-box-map{
+    width: 1200px;
+    height: 400px;
+    position: relative;
+}
+.big-box-map img{
+    position: absolute;
     display: block;
     width: 1200px;
     height: 400px;
 }
 
 .small-map {
+    width: 1200px;
+    height: 350px;
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
+    position: absolute;
 }
+.small-box{
+    width: 1200px;
+    height: 350px;
+    margin-top: 20px;
+    margin: 0 auto;
+    overflow: hidden;
+    
+}
+.small-box div div{
+    float: left;
+    margin-left: 10px;;
+}
+.small-box div p{
+    width: 285px;
+    height: 20px;
+    text-align: center;
+    overflow: hidden;
+    line-height: 20px;
+    margin: 10px 0;
+}
+
 
 /* tab切换的按钮 */
 .tab-button {
@@ -634,6 +673,7 @@
 }
 
 /* 小图下面的商品名称和价格 */
+
 .small-box .name {
     font-size: 14px;
     line-height: 20px;

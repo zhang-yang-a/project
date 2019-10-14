@@ -1,1 +1,1 @@
-require(['ceshi']);
+require([ 'indexRender', 'login', 'register']);
