@@ -1,0 +1,353 @@
+.bread-map {
+    width: 100%;
+
+}
+li{
+    font-size: 12px;
+}
+.bread {
+    width: 1190px;
+    height: 22px;
+    margin: 0 auto;
+    padding: 20px 0;
+
+}
+
+.bread li {
+    float: left;
+    list-style: none;
+    position: relative;
+    margin-right: 25px;
+    height: 22px;
+    line-height: 22px;
+    color: #aaa;
+    cursor: pointer;
+}
+
+/* 右半括号 */
+.arrow-r {
+    position: absolute;
+    top: 0;
+    right: -14px;
+    width: 5px;
+    height: 9px;
+    overflow: hidden;
+    display: block;
+    vertical-align: top;
+    margin-top: 7px;
+    background: url(../img/arrow.r.png) no-repeat;
+}
+
+/* 商品详情区域 */
+.container {
+    width: 1190px;
+    margin: 0 auto;
+}
+
+/* ***********商品详情页开始*********** */
+/* 商品详情外层 */
+.detail-wrap {
+    /* z-index: 99999999; */
+    /* position: relative; */
+    margin: 0 auto 0 auto;
+    width: 1140px;
+    color: #3C3C3C;
+    border: 1px solid #E8E8E8;
+    height: 700px;
+}
+
+/* 商品详情左部分 */
+.detail-l {
+    border-right: 1px solid #E8E8E8;
+}
+
+/* 具体商品图片部分及下方的小图部分 */
+.detail-l .detail-item-l {
+    padding: 20px 0 20px 20px;
+    width: 400px;
+    position: relative;
+}
+
+/* 图片放大镜外层 */
+.detail-l .item-pic-wrap {
+    margin-bottom: 18px;
+    width: 400px;
+    position: relative;
+}
+
+/* 小图 小放 外层 */
+.detail-l .s-pic {
+    position: relative;
+}
+
+/* 小图 */
+.detail-l .s-pic img {
+    width: 400px;
+    height: 400px;
+}
+
+/*** 小放 **/
+.detail-l .sf {
+    /*宽高暂时*/
+    width: 100px;
+    height: 100px;
+    background: #FEDE4F;
+    opacity: 0.5;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    /* visibility: hidden; */
+    cursor: move;
+}
+
+/* 大放 大图 */
+.detail-l .bf {
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    position: absolute;
+    left: 410px;
+    top: 0;
+    display: none;
+}
+
+/* 大图 */
+.detail-l .bf .b-pic {
+    width: 800px;
+    height: 800px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* 下方的小图 list */
+.detail-l .s-list li {
+    display: inline;
+    float: left;
+    margin-right: 9px;
+    width: 50px;
+    height: 50px;
+    background: pink;
+    border: 2px solid #fff;
+}
+
+.detail-l .s-list img {
+    width: 50px;
+    height: 50px;
+    display: block;
+}
+
+.detail-l .s-list li:hover {
+    border: 2px solid #f40;
+}
+
+/* detail-item-r fl */
+.detail-item-r {
+    float: left;
+}
+
+/* 具体商品尺寸选择 送货地址等地址 */
+.detail-l .detail-item-r {
+    padding: 0 20px 20px 18px;
+    width: 480px;
+}
+
+/* 商品名称 */
+.detail-item-r h3 {
+    min-height: 21px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 21px;
+    color: #3C3C3C;
+    padding: 20px 0 10px;
+}
+
+.detail-item-r p {
+    padding-bottom: 5px;
+}
+
+/* 价格 */
+.detail-item-r .price {
+    padding: 10px;
+    background-color: #FFF2E8;
+    position: relative;
+}
+
+.detail-item-r .price li {
+    margin-bottom: 5px;
+}
+
+/* 原价 */
+.price .price-original {
+    overflow: hidden;
+}
+
+.detail-item-r .price .span {
+    display: inline-block;
+    width: 60px;
+    color: #6c6c6c;
+}
+
+/* 淘宝价 */
+.price .tb-price em {
+    margin-right: 5px;
+    vertical-align: middle;
+    font-size: 26px;
+    font-weight: 700;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    color: #F40;
+}
+
+.price .tb-price i {
+    display: inline-block;
+    padding: 0 4px;
+    height: 18px;
+    line-height: 18px;
+    color: #FFF;
+    background: #FF8E1B;
+}
+
+/* 优惠 */
+.price .youhui {
+    padding: 5px 0;
+}
+
+.price .youhui-detail {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.price .youhui-detail h5 {
+    margin-bottom: 5px;
+}
+
+/* 累计评价 */
+.price .tb-comment {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    line-height: 24px;
+}
+
+.price .tb-comment .comment {
+    display: inline-block;
+    text-align: center;
+    padding: 0 5px;
+}
+
+.price .tb-comment strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+/* 配送 */
+.price .peisong p {
+    display: inline-block;
+}
+
+/* 尺寸 */
+.tb-common {
+    padding: 10px;
+    overflow: hidden;
+}
+
+.tb-common dt {
+    width: 60px;
+    color: #6c6c6c;
+}
+
+.tb-common dd a {
+    display: inline-block;
+    margin-right: 5px;
+    text-align: center;
+    line-height: 28px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5px;
+}
+
+/* 颜色 */
+
+/* 购买数量 */
+.tb-number dd a {
+    float: left;
+    margin-right: 0;
+    width: 26px;
+    height: 26px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    text-align: center;
+}
+
+.tb-number-input {
+    margin: 5px 0 5px 5px ;
+    width: 48px;
+    height: 34px;
+    float: left;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+/* 立即购买 加入购物车 */
+.tb-btn {
+    margin: 30px;
+}
+
+.tb-btn a {
+    display: inline-block;
+    cursor: pointer;
+    width: 134px;
+    height: 38px;
+    text-align: center;
+    font-family: "Hiragino Sans GB", "microsoft yahei", sans-serif;
+    font-size: 16px;
+    line-height: 38px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+}
+
+.tb-btn .buy {
+    color: #E5511D;
+    border-color: #F0CAB6;
+    background: #FFE4D0;
+}
+
+.tb-btn .cart-add {
+    border-color: #F22D00;
+    background: #F22D00;
+    width: 180px;
+    color: #FFF;
+    margin-left: 30px;
+}
+
+/* 通用 */
+.container-fluid {
+    width: 100%;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+}
+
+.c {
+    color: #f40 !important;
+}
+
+
+/* ***********商品详情页结束*********** */

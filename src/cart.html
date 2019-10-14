@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description"
+        content="美乐乐，提供各类服饰、美容、家居、数码、话费/点卡充值… 数亿优质商品，同时提供担保交易(先收货后付款)等安全交易保障服务，并由商家提供退货承诺、破损补寄等消费者保障服务，让你安心享受网上购物乐趣！" />
+    <meta name="keyword"
+        content="美乐乐,网上购物,C2C,在线交易,交易市场,网上交易,交易市场,网上买,网上卖,购物网站,团购,网上贸易,安全购物,电子商务,放心买,供应,买卖信息,网店,一口价,拍卖,网上开店,网络购物,打折,免费开店,网购,频道,店铺" />
+    <title>我的购物车-美乐乐</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/cart.css">
+
+</head>
+
+<body style="height: 2000px;">
+
+    <!-- 购物车部分 -->
+    <div class="container">
+        <!-- 此盒子限制购物车部分大小 -->
+        <div class="cart-size">
+
+            <!-- 购物车顶部tab 键部分 -->
+            <div class="cart-wrap">
+                <div>
+                    <!-- 购物车切换按钮 全部商品 降价商品 库存紧张 -->
+                    <ul class="cart-tab">
+                        <!-- 全部商品 -->
+                        <li class="cart-tab-item current item1">
+                            <a>
+                                <em>全部商品</em>
+                                <span class="number">1</span>
+                                <span class="spacer"></span>
+                            </a>
+                        </li>
+                        <!-- 降价商品 -->
+                        <li class="cart-tab-item item2">
+                            <a>
+                                <em>降价商品</em>
+                                <span class="number">0</span>
+                                <span class="spacer"></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- 右上部 结算部分 -->
+                    <div class="cart-sum">
+                        <span>已选商品（不含运费）</span>
+                        <strong class="price">
+                            <em><span>&nbsp;</span>0.00</em>
+                        </strong><a class="sum-btn">结&nbsp;算</a>
+                    </div>
+                </div>
+                <!-- tab键 下面的线 -->
+                <div class="wrap-line">
+                    <div style="width: 123px; left: -1px;" class="current"></div>
+                </div>
+            </div>
+            <!-- 购物车tab键 部分结束 -->
+
+            <!-- 购物车商品详情开始 -->
+            <div class="cart-detail">
+
+                <!-- 购物车表头部分 -->
+                <div class="cart-table-th">
+                    <!-- 全选部分 -->
+                    <ul class="check-all fl">
+                        <li>
+                            <input type="checkbox"><label for="" style="cursor:pointer">&nbsp;&nbsp;全选</label>
+                        </li>
+                        <li style="margin-left: 40px">商品详情</li>
+                    </ul>
+                    <!-- 单价数量金额操作部分 -->
+                    <ul class="check-part fr">
+                        <li>单价</li>
+                        <li>数量</li>
+                        <li>金额</li>
+                        <li>操作</li>
+                    </ul>
+                </div>
+                <!-- 购物车表头部分结束 -->
+
+                <!-- 购物车店铺开始 -->
+                <div class="shop-info">
+                    <ul>
+                        <li>
+                            <input type="checkbox"><label for="" style="cursor: pointer">&nbsp;&nbsp;<a
+                                    href="">美乐乐自营</a></label>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 购物车店铺结束 -->
+
+                <!-- 购物车商品list开始 -->
+                <div class="goods-wrap">
+                    <div class="goods-inner">
+                        <!-- 购物车内的商品 -->
+                        <ul>
+
+                            <!-- 勾选框 -->
+                            <li>
+                                <input type="checkbox">
+                            </li>
+                            <!-- 实例商品 js渲染 -->
+                            <li>
+                                <dl class="fl">
+                                    <img src="https://img001.mll3321.com/images/small/268/width/210/height/139/mode/1/encrypt/0fadff6c35bbf9c112d8b6dfd289de65/path/YKkxtD0+l8CT6mdTP0jUTosXyzGqRaYb484nDncYwHNYTxpVfBPqrQBVjBA2+sEa5e0Pue1IOJ49ei5cbQJ1Dg==.jpg"
+                                        alt="">
+                                </dl>
+                                <dt class="fl">
+                                    <a href="#">至简尚品 上乘实木框架 全实木无扶手餐椅 简约餐厅家具 1.5米餐椅套装（1桌+6椅）</a>
+                                </dt>
+                            </li>
+                            <!-- 原价 现价 -->
+                            <li class="goods-price">
+                                <div class="price">
+                                    <em class="price-original">￥169.00</em>
+                                    <br>
+                                    <em class="price-now">￥149.00</em>
+                                </div>
+                                <!-- 卖方降价 -->
+                                <div class="seller">
+                                    卖家降价
+                                </div>
+                            </li>
+                            <!-- 选择购买数量 -->
+                            <li style="margin-left: 50px;">
+                                <!-- 数量 -->
+                                <div class="goods-amount">
+                                    <a href="javascript:;" class="arrow-l">-</a>
+                                    <input type="text" value="1">
+                                    <a href="javascript:;" class="arrow-r">+</a>
+                                </div>
+                                <!-- 限购 -->
+                                <div class="amount-msg">
+                                    <em>限购十件</em>
+                                </div>
+                            </li>
+                            <!-- 总价 -->
+                            <li>
+                                <div class="price-sum">
+                                    <em>￥149.00</em>
+                                </div>
+                            </li>
+                            <!-- 删除 收藏 相似宝贝 -->
+                            <li>
+                                <div class="item-collect">
+                                    <a href="javascript:;">删除</a><br>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                        <ul>
+
+                            <!-- 勾选框 -->
+                            <li>
+                                <input type="checkbox">
+                            </li>
+                            <!-- 实例商品 js渲染 -->
+                            <li>
+                                <dl class="fl">
+                                    <img src="https://img001.mll3321.com/images/small/268/width/210/height/139/mode/1/encrypt/0fadff6c35bbf9c112d8b6dfd289de65/path/YKkxtD0+l8CT6mdTP0jUTosXyzGqRaYb484nDncYwHNYTxpVfBPqrQBVjBA2+sEa5e0Pue1IOJ49ei5cbQJ1Dg==.jpg"
+                                        alt="">
+                                </dl>
+                                <dt class="fl">
+                                    <a href="#">至简尚品 上乘实木框架 全实木无扶手餐椅 简约餐厅家具 1.5米餐椅套装（1桌+6椅）</a>
+                                </dt>
+                            </li>
+                            <!-- 原价 现价 -->
+                            <li class="goods-price">
+                                <div class="price">
+                                    <em class="price-original">￥169.00</em>
+                                    <br>
+                                    <em class="price-now">￥149.00</em>
+                                </div>
+                                <!-- 卖方降价 -->
+                                <div class="seller">
+                                    卖家降价
+                                </div>
+                            </li>
+                            <!-- 选择购买数量 -->
+                            <li style="margin-left: 50px;">
+                                <!-- 数量 -->
+                                <div class="goods-amount">
+                                    <a href="javascript:;" class="arrow-l">-</a>
+                                    <input type="text" value="1">
+                                    <a href="javascript:;" class="arrow-r">+</a>
+                                </div>
+                                <!-- 限购 -->
+                                <div class="amount-msg">
+                                    <em>限购十件</em>
+                                </div>
+                            </li>
+                            <!-- 总价 -->
+                            <li>
+                                <div class="price-sum">
+                                    <em>￥149.00</em>
+                                </div>
+                            </li>
+                            <!-- 删除 收藏 相似宝贝 -->
+                            <li>
+                                <div class="item-collect">
+                                    <a href="javascript:;">删除</a><br>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- 购物车商品list 结束-->
+            </div>
+            <!-- 购物车商品详情结束 -->
+
+
+            <!-- 购物车结算部分开始 -->
+            <div class="cart-foot">
+                <ul class="fl select-all">
+                    <li>
+                        <input type="checkbox"><label for="" style="cursor:pointer">&nbsp;&nbsp;全选</label>
+                    </li>
+                    <li>
+                        <a href="javascript:;">删除选中商品</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">移入收藏夹</a>
+                    </li>
+                    <li>
+                        <a href="#">清除失效商品</a>
+                    </li>
+                </ul>
+                <ul class="fr settlement">
+                    <li class="current-goods">
+                        已选商品<span>&nbsp;0&nbsp;</span>件
+                    </li>
+                    <li>
+                        <span>已选商品（不含运费）</span>
+                        <strong class="price-sum">
+                            <em><span>&nbsp;</span>0.00</em>
+                        </strong><a class="settlement-btn">去下单</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- 购物车结算部分结束 -->
+
+        </div>
+    </div>
+
+</body>
+
+</html>
