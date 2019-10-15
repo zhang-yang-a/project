@@ -8,6 +8,27 @@
     left: 0px;
     z-index: 99999;
 }
+.search-top-inner{
+    width: 1200px;
+    height: 54px;
+    margin: 0 auto;
+}
+.search-top-inner form{
+    width: 610px;
+    height: 42px;
+    margin: auto auto ;
+    position: relative;
+}
+ /*下拉搜索框的搜索图片 */ 
+.submit-btn-top i {
+    width: 22px;
+    height: 22px;
+    background: url(../img/index.png) -60px -251px no-repeat;
+    display: inline-block;
+    margin-top: 9px;
+    position: absolute;
+    right: 10px;
+}
 
 .nav-map {
     width: 100%;
@@ -58,15 +79,13 @@
     height: 30px;
     float: right;
     display: block;
+    box-sizing: border-box;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     padding-inline-start: 40px;
 }
 
-.customer li {
-    float: left;
-    padding: 0 5px;
-}
+
 
 /* 购物车图标 */
 .cart .icon {
@@ -117,17 +136,29 @@
     border: 1px solid #eaeaea;
     border-top: none;
     left: -1px;
-    top: 29px;
+    top: 28px;
 }
 
 .mll {
     position: relative;
 }
+.customer li {
+    float: left;
+    padding: 0 3px;
+}
+.nav-bar .customer .drop-down li{
+    box-sizing: border-box;
+    float: left;
+    padding: 0 5px;
+}
+.drop-down{
+    box-sizing: border-box;
+}
 
 .drop-down:hover {
     border: 1px solid #eaeaea;
     background: #fff;
-
+    padding: 0 2px;
 }
 
 .mll:hover .drop-down-content {
@@ -318,9 +349,11 @@
 }
 
 .scroll-content {
-    
+    width: 1200px;
+    height: 460px;
     margin: 0 auto;
     position: relative;
+    display: block;
 }
 
 .scroll-content li{
@@ -329,6 +362,7 @@
     margin: 0 auto;
     float: left;
     position: absolute;
+    display: block;
     
 }
 .scroll-content li a{
@@ -336,6 +370,8 @@
     float: left;
 }
 .scroll-content li a img{
+    width: 1200px;
+    height: 460px;
     display: block;
 }
 
@@ -362,20 +398,17 @@
 }
 
 /* 轮播图右侧浮框 */
-.expr-map {
-    width: 1200px;
-    position: relative;
-    margin: 0 auto;
-}
+
 
 .expr-link {
     background: white;
     position: absolute;
     width: 180px;
     height: 360px;
-    right: 0;
+    right: 74px;
     top: 50px;
     text-align: center;
+    z-index: 100;
 }
 
 .word {
@@ -449,7 +482,6 @@
 /* 精选区域小样图 */
 .list {
     width: 1200px;
-    height: px;
     margin: 0 auto;
 
 }
@@ -880,6 +912,7 @@
     bottom: 50px;
     left: 20px;
     border: 1px solid #ddd;
+    display: none;
 }
 
 #loutinav ul li {
@@ -911,6 +944,11 @@
 }
 
 #loutinav ul li.active span {
+    background: #c00;
+    color: #fff;
+    display: block;
+}
+#loutinav ul li:hover  {
     background: #c00;
     color: #fff;
     display: block;
