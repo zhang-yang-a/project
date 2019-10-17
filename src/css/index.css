@@ -362,7 +362,7 @@
     margin: 0 auto;
     float: left;
     position: absolute;
-    display: block;
+    display: none;
     
 }
 .scroll-content li a{
@@ -395,6 +395,9 @@
     margin: 0 1px;
     cursor: pointer;
     background: #fff;
+}
+.scroll-btn .active{
+    background: #333;
 }
 
 /* 轮播图右侧浮框 */

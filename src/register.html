@@ -12,7 +12,7 @@
     <title>欢迎注册美乐乐</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/register.css">
-    <script src="./script/require.js" defer async="true" data-main="script/main.js"></script>
+    <script src="./script/require.js" defer async="true" data-main="script/registermain.js"></script>
 
 </head>
 
@@ -40,31 +40,31 @@
         <div class="type-register-map">
             <div class="type-register-left">
                 <!-- 注册输入框 -->
-                <form action="">
-                    <p><label for=""><span>*</span>账户名：</label><input type="text"> <span></span></p>
-                    <p><label for=""><span>*</span>设置密码：</label><input type="text"> <span></span></p>
-                    <p><label for=""><span>*</span>确认密码：</label><input type="text"> <span></span></p>
-                    <p><label for=""><span>*</span>手机号码：</label><input type="text"> <span></span></p>
-                    <p><label for=""><span>*</span>验证码：</label><input type="text"> <span></span></p>
+                <form action="" method="post" id="form1" >
+                    <p><label for="">* 账户名：</label><input name="username" id="username" type="text"> <span class="usename_box"></span></p>
+                    <p><label for="">* 电子邮箱：</label><input name="email" class="email-input" type="text"> <span class="email_box"></span></p>
+                    <p><label for="">* 设置密码：</label><input class="password-input" name="password2" type="password"> <span class="password_box"></span></p>
+                    <p><label for="">* 确认密码：</label><input class="password-input-2" type="password"> <span class="password_box2"></span></p>
                     <p class="readed gray">
                         <input type="checkbox" id="sms_checked_look" checked=""><label>请阅读《<a href="" target=""
                                 class="blue">美乐乐用户注册协议</a>》</label>
                     </p>
-                    <input type="button" class="regi-btn" value="注册">
+                    <a href="##" class="regi-btn">注册</a>
+                    <!-- <input type="submit" name="submit" class="regi-btn" value="注册"> -->
                 </form>
 
 
             </div>
             <!-- 右侧登录页面转切按钮 -->
             <div class="type-register-right">
-                <a href="http://localhost/project/src/login.html" target="_blank"><input type="button" class="regi-btn type-right"
+                <a href="http://10.31.155.15/project/src/login.html" target="_blank"><input type="button" class="regi-btn type-right"
                         value="登录"></a>
             </div>
         </div>
     </div>
 
 
-    <!-- 
+   
 </body>
 
 </html>

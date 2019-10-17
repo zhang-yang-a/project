@@ -12,6 +12,7 @@
     <title>商品详情</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/details.css">
+    <script src="./script/require.js" defer async="true" data-main="script/detailmain.js"></script>
 </head>
 
 <body>
@@ -52,7 +53,8 @@
                     <div class="item-pic-wrap">
                         <!-- 小图 小放 -->
                         <div class="s-pic">
-                            <img src="https://image.meilele.com/images/small/277/width/520/height/344/mode/1/encrypt/4172069610e547590a8b00f44ce6240b/path/YKkxtD0+l8CT6mdTP0jUTosXyzGqRaYb484nDncYwHOquGAREpTKYrSRDNt0yFbd0l2gWbKHWSaWYV8Q1jIZ9w==.jpg"
+                            <img class="sf-pic"
+                                src="https://image.meilele.com/images/small/277/width/520/height/344/mode/1/encrypt/4172069610e547590a8b00f44ce6240b/path/YKkxtD0+l8CT6mdTP0jUTosXyzGqRaYb484nDncYwHOquGAREpTKYrSRDNt0yFbd0l2gWbKHWSaWYV8Q1jIZ9w==.jpg"
                                 alt="">
                             <div class="sf"></div>
                         </div>
@@ -62,26 +64,34 @@
                                 alt="" class="b-pic">
                         </div>
                         <!-- 小图 list -->
-                        <ul class="s-list clearfix">
-                            <li><a href="#"><img
-                                        src="https://image.meilele.com/images/small/277/width/520/height/344/mode/1/encrypt/4172069610e547590a8b00f44ce6240b/path/YKkxtD0+l8CT6mdTP0jUTosXyzGqRaYb484nDncYwHOquGAREpTKYrSRDNt0yFbd0l2gWbKHWSaWYV8Q1jIZ9w==.jpg"
-                                        alt=""></a></li>
-                            <li><a href="#"><img
-                                        src="https://image.meilele.com/images/small/277/width/520/height/344/mode/1/encrypt/4172069610e547590a8b00f44ce6240b/path/YKkxtD0+l8CT6mdTP0jUTosXyzGqRaYb484nDncYwHOquGAREpTKYrSRDNt0yFbd0l2gWbKHWSaWYV8Q1jIZ9w==.jpg"
-                                        alt=""></a></li>
-                            <li><a href="#"><img
-                                        src="https://image.meilele.com/images/small/277/width/520/height/344/mode/1/encrypt/4172069610e547590a8b00f44ce6240b/path/YKkxtD0+l8CT6mdTP0jUTosXyzGqRaYb484nDncYwHOquGAREpTKYrSRDNt0yFbd0l2gWbKHWSaWYV8Q1jIZ9w==.jpg"
-                                        alt=""></a></li>
-                            <li><a href="#"><img
-                                        src="https://image.meilele.com/images/small/277/width/520/height/344/mode/1/encrypt/4172069610e547590a8b00f44ce6240b/path/YKkxtD0+l8CT6mdTP0jUTosXyzGqRaYb484nDncYwHOquGAREpTKYrSRDNt0yFbd0l2gWbKHWSaWYV8Q1jIZ9w==.jpg"
-                                        alt=""></a></li>
-                            <li><a href="#"><img
-                                        src="https://image.meilele.com/images/small/277/width/520/height/344/mode/1/encrypt/4172069610e547590a8b00f44ce6240b/path/YKkxtD0+l8CT6mdTP0jUTosXyzGqRaYb484nDncYwHOquGAREpTKYrSRDNt0yFbd0l2gWbKHWSaWYV8Q1jIZ9w==.jpg"
-                                        alt=""></a></li>
-                            <li><a href="#"><img
-                                        src="https://image.meilele.com/images/small/277/width/520/height/344/mode/1/encrypt/4172069610e547590a8b00f44ce6240b/path/YKkxtD0+l8CT6mdTP0jUTosXyzGqRaYb484nDncYwHOquGAREpTKYrSRDNt0yFbd0l2gWbKHWSaWYV8Q1jIZ9w==.jpg"
-                                        alt=""></a></li>
-                        </ul>
+                        <div class="ulist">
+                            <a href="javascript:;" id="left">&lt;</a>
+                            <a href="javascript:;" id="right">&gt;</a>
+                            <ul class="s-list clearfix"></ul>
+
+                            <!-- <li><a href="#"><img
+                                            src="https://image.meilele.com/images/small/277/width/520/height/344/mode/1/encrypt/4172069610e547590a8b00f44ce6240b/path/YKkxtD0+l8CT6mdTP0jUTosXyzGqRaYb484nDncYwHOquGAREpTKYrSRDNt0yFbd0l2gWbKHWSaWYV8Q1jIZ9w==.jpg"
+                                            alt=""></a></li>
+                                <li><a href="#"><img
+                                            src="https://image.meilele.com/images/small/277/width/520/height/344/mode/1/encrypt/4172069610e547590a8b00f44ce6240b/path/YKkxtD0+l8CT6mdTP0jUTosXyzGqRaYb484nDncYwHOquGAREpTKYrSRDNt0yFbd0l2gWbKHWSaWYV8Q1jIZ9w==.jpg"
+                                            alt=""></a></li>
+                                <li><a href="#"><img
+                                            src="https://image.meilele.com/images/small/277/width/520/height/344/mode/1/encrypt/4172069610e547590a8b00f44ce6240b/path/YKkxtD0+l8CT6mdTP0jUTosXyzGqRaYb484nDncYwHOquGAREpTKYrSRDNt0yFbd0l2gWbKHWSaWYV8Q1jIZ9w==.jpg"
+                                            alt=""></a></li>
+                                <li><a href="#"><img
+                                            src="https://image.meilele.com/images/small/277/width/520/height/344/mode/1/encrypt/4172069610e547590a8b00f44ce6240b/path/YKkxtD0+l8CT6mdTP0jUTosXyzGqRaYb484nDncYwHOquGAREpTKYrSRDNt0yFbd0l2gWbKHWSaWYV8Q1jIZ9w==.jpg"
+                                            alt=""></a></li>
+                                <li><a href="#"><img
+                                            src="https://image.meilele.com/images/small/277/width/520/height/344/mode/1/encrypt/4172069610e547590a8b00f44ce6240b/path/YKkxtD0+l8CT6mdTP0jUTosXyzGqRaYb484nDncYwHOquGAREpTKYrSRDNt0yFbd0l2gWbKHWSaWYV8Q1jIZ9w==.jpg"
+                                            alt=""></a></li>
+                                <li><a href="#"><img
+                                            src="https://image.meilele.com/images/small/277/width/520/height/344/mode/1/encrypt/4172069610e547590a8b00f44ce6240b/path/YKkxtD0+l8CT6mdTP0jUTosXyzGqRaYb484nDncYwHOquGAREpTKYrSRDNt0yFbd0l2gWbKHWSaWYV8Q1jIZ9w==.jpg"
+                                            alt=""></a></li> -->
+
+
+
+                        </div>
+
                     </div>
                     <!-- 收藏宝贝 -->
                     <div class="item-collect">
@@ -107,7 +117,7 @@
                         <li class="tb-price">
                             <span class="span">促销价</span>
                             <strong>
-                                <em>¥</em><em>4499.00</em>
+                                <em>¥</em><em class="price-jiage">4499.00</em>
                             </strong>
                             <i>降价通知</i>
                         </li>
@@ -178,9 +188,8 @@
 
                     <!-- 立即购买 加入购物车 -->
                     <div class="tb-btn">
-
-                        <a href="" class="cart-add">加入购物车</a>
-                        <a href="cart.html" class="buy">在线咨询</a>
+                        <a href="##" class="cart-add">加入购物车</a>
+                        <a href="http://10.31.155.15/project/src/cart.html" class="buy">去购物车</a>
                     </div>
                 </div>
             </div>

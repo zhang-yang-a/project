@@ -2,9 +2,11 @@
     width: 100%;
 
 }
-li{
+
+li {
     font-size: 12px;
 }
+
 .bread {
     width: 1190px;
     height: 22px;
@@ -131,10 +133,37 @@ li{
     border: 2px solid #fff;
 }
 
+.ulist a {
+    width: 10px;
+    height: 54px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    line-height: 56px;
+    text-align: center;
+    background: #fff;
+}
+
+#left {
+    float: left;
+}
+
+#right {
+    float: right;
+}
+
+.s-list {
+    overflow: hidden;
+    width: 375px;
+    height: 50px;
+
+}
+
 .detail-l .s-list img {
     width: 50px;
     height: 50px;
     display: block;
+    float: left;
+
 }
 
 .detail-l .s-list li:hover {
@@ -282,7 +311,7 @@ li{
 }
 
 .tb-number-input {
-    margin: 5px 0 5px 5px ;
+    margin: 5px 0 5px 5px;
     width: 48px;
     height: 34px;
     float: left;

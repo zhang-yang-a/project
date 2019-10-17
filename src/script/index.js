@@ -62,5 +62,17 @@ require(['config'], function () {//调用配置config配置模块
             });
         })();
 
+        //轮播图效果
+
+        (function lunbo() {
+            let imgs = $('.scroll-content li');
+            let btns = $('.scroll-btn span');
+            //给当前点击的span按钮添加点击类           
+            btns.on('mouseover', function () {
+                $(this).addClass('active').siblings('span').removeClass('active');
+                $('.scroll-content li').eq($(this).index()).show().siblings('li').hide();
+            })
+
+        })();
     })
 })

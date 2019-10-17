@@ -1,1 +1,1 @@
-require([ 'indexRender','index', 'login', 'register',]);
+require([ 'indexRender','index']);
