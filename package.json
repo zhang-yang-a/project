@@ -1,0 +1,36 @@
+{
+  "name": "web-project",
+  "version": "1.0.0",
+  "description": "A web project with Vue and React components",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "jest",
+    "test:unit": "jest tests/unit",
+    "test:vue": "jest tests/unit/HelloWorld.vue.test.js",
+    "test:react": "jest tests/unit/HelloWorld.test.jsx"
+  },
+  "keywords": ["vue", "react", "javascript", "testing"],
+  "author": "Project Author",
+  "license": "MIT",
+  "devDependencies": {
+    "@testing-library/react": "^13.4.0",
+    "@vue/test-utils": "^2.4.1",
+    "jest": "^29.6.2",
+    "vue": "^3.3.4"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.vue$": "@vue/vue3-jest",
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "testMatch": [
+      "**/tests/unit/**/*.test.(js|jsx|vue)"
+    ]
+  }
+}
