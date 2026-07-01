@@ -1,80 +1,113 @@
-function $ajax(option) { //对象做参数
-    let promise = new Promise(function (resolve, reject) {
-        let ajax = new XMLHttpRequest();
-        //1.type设置默认值,默认get
-        option.type = option.type || 'get';
-
-        //2.设置option.url.必填参数
-        if (!option.url) {
-            throw new Error('接口地址必须添加'); //创建错误对象，抛出错误，显示在控制台
-        }
-
-        //3.数据传输。
-        //判断数据是否存在。
-        //3.1判断数据的格式。
-        function objToString(obj) {
-            let objarr = [];
-            for (var attr in obj) {
-                objarr.push(attr + '=' + obj[attr]);
-            }
-            return objarr.join('&'); //name=zhangsna&age=100&sex=男
-        }
-
-        if (option.data) {
-            if (typeof option.data === 'object' && !Array.isArray(option.data)) { //数据格式：对象
-                option.data = objToString(option.data);
-            } else {
-                option.data = option.data;
+/**
+ * Ajax Promise 封装模块 - 重构版本
+ * 基于 XMLHttpRequest 和 Promise 的异步请求封装
+ */
+define([], function () {
+    /**
+     * 对象转 URL 参数
+     * @param {Object} obj - 参数对象
+     * @returns {string} URL 参数字符串
+     */
+    function objToString(obj) {
+        var objarr = [];
+        for (var attr in obj) {
+            if (obj.hasOwnProperty(attr)) {
+                objarr.push(encodeURIComponent(attr) + '=' + encodeURIComponent(obj[attr]));
             }
         }
-        //3.2判断传输的方式--get
-        if (option.data && option.type === 'get') {
-            option.url += '?' + option.data;
-        }
+        return objarr.join('&');
+    }
 
-        //4.判断是否异步
-        if (option.async === 'false' || option.async === false) {
-            option.async = false;
-        } else {
-            option.async = true;
-        }
-
-
-        ajax.open(option.type, option.url, option.async);
-
-        //3.3判断传输的方式--post
-        if (option.data && option.type === 'post') {
-            ajax.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-            ajax.send(option.data);
-        } else {
-            ajax.send();
-        }
-        //5.判断是否异步
-        if (option.async) {
-            ajax.onreadystatechange = function () {
-                if (ajax.readyState === 4) { //ajax.send发送解析完成
-                    if (ajax.status === 200) { //接口地址请求成功
-                        //8.判断是否设置数据类型
-                        if (option.dataType === 'json') {
-                            objdata = JSON.parse(ajax.responseText);
-                        } else {
-                            objdata = ajax.responseText;
-                        }
-                        //6.设置请求成功状态
-                        resolve(objdata); //objdata传给then里面函数。
-                    } else {
-                        //7.设置请求失败状态
-                        reject('接口地址请求失败' + ajax.status);
-                    }
+    /**
+     * Ajax 请求函数
+     * @param {Object} option - 请求配置对象
+     * @param {string} option.url - 请求地址（必填）
+     * @param {string} [option.type='get'] - 请求类型，默认 get
+     * @param {Object|string} [option.data] - 请求数据
+     * @param {boolean} [option.async=true] - 是否异步
+     * @param {string} [option.dataType] - 数据类型，如'json'
+     * @returns {Promise} Promise 对象
+     */
+    function $ajax(option) {
+        return new Promise(function (resolve, reject) {
+            var ajax = new XMLHttpRequest();
+            var objdata;
+            
+            // 1. 设置默认值
+            option.type = option.type || 'get';
+            
+            // 2. 验证必填参数
+            if (!option.url) {
+                throw new Error('接口地址必须添加');
+            }
+            
+            // 3. 处理请求数据
+            if (option.data) {
+                if (typeof option.data === 'object' && !Array.isArray(option.data)) {
+                    option.data = objToString(option.data);
                 }
             }
-        } else {
-            if (ajax.status === 200) { //接口地址请求成功
-                resolve(objdata); //objdata传给then里面函数。
-            } else { //请求失败
-                reject('接口地址请求失败' + ajax.status);
+            
+            // 4. GET 请求参数拼接到 URL
+            if (option.data && option.type === 'get') {
+                option.url += (option.url.indexOf('?') === -1 ? '?' : '&') + option.data;
             }
-        }
-    });
-    return promise;
-}
+            
+            // 5. 设置异步标志
+            option.async = (option.async === false || option.async === 'false') ? false : true;
+            
+            // 6. 初始化请求
+            ajax.open(option.type, option.url, option.async);
+            
+            // 7. 发送请求
+            if (option.data && option.type === 'post') {
+                ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                ajax.send(option.data);
+            } else {
+                ajax.send();
+            }
+            
+            // 8. 处理响应
+            if (option.async) {
+                ajax.onreadystatechange = function () {
+                    if (ajax.readyState === 4) {
+                        if (ajax.status === 200) {
+                            if (option.dataType === 'json') {
+                                try {
+                                    objdata = JSON.parse(ajax.responseText);
+                                } catch (e) {
+                                    reject('JSON 解析失败：' + e.message);
+                                    return;
+                                }
+                            } else {
+                                objdata = ajax.responseText;
+                            }
+                            resolve(objdata);
+                        } else {
+                            reject('接口地址请求失败，状态码：' + ajax.status);
+                        }
+                    }
+                };
+            } else {
+                // 同步请求（不推荐使用）
+                if (ajax.status === 200) {
+                    if (option.dataType === 'json') {
+                        try {
+                            objdata = JSON.parse(ajax.responseText);
+                        } catch (e) {
+                            reject('JSON 解析失败：' + e.message);
+                            return;
+                        }
+                    } else {
+                        objdata = ajax.responseText;
+                    }
+                    resolve(objdata);
+                } else {
+                    reject('接口地址请求失败，状态码：' + ajax.status);
+                }
+            }
+        });
+    }
+
+    return $ajax;
+});

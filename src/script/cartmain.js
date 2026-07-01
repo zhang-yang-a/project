@@ -1,1 +1,4 @@
-require(['cart','cookie']);
+/**
+ * 购物车页入口文件 - 重构版本
+ */
+require(['cart']);

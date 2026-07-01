@@ -1,78 +1,134 @@
-require(['config'], function () {//调用配置config配置模块
-    require(['jquery'], function () {//加载模块
-
-        // 顶部悬浮下拉出现搜索框
-        (function () {
-            $(window).on('scroll', function () {
-                let $top = $(window).scrollTop();
-                $('title').html($top);
-                if ($top >= 700) {
-                    $('.search-top').stop(true).animate({
-                        top: 0
-                    });
-                } else {
-                    $('.search-top').stop(true).animate({
-                        top: -60
-                    });
+/**
+ * 首页交互模块 - 重构版本
+ */
+require(['config', 'jquery'], function (Config, $) {
+    var $window = $(window);
+    
+    /**
+     * 顶部搜索框悬浮效果
+     */
+    function initSearchScroll() {
+        var $searchTop = $(Config.SELECTORS.SEARCH_TOP || '.search-top');
+        
+        $window.on('scroll', Utils.throttle(function () {
+            var scrollTop = $window.scrollTop();
+            
+            if (scrollTop >= Config.CONSTANTS.SCROLL_THRESHOLD) {
+                $searchTop.stop(true).animate({ top: 0 });
+            } else {
+                $searchTop.stop(true).animate({ top: -60 });
+            }
+        }, 100));
+    }
+    
+    /**
+     * 楼层导航效果
+     */
+    function initFloorNav() {
+        var $loutiNav = $('#loutinav');
+        var $loutiList = $('#loutinav ul li').not('.loutilast');
+        var $louceng = $('.louceng');
+        var $last = $('.loutilast');
+        
+        // 滚动时显示/隐藏楼梯
+        $window.on('scroll', Utils.throttle(function () {
+            var scrollTop = $window.scrollTop();
+            
+            // 显示/隐藏楼梯
+            if (scrollTop >= Config.CONSTANTS.SCROLL_THRESHOLD) {
+                $loutiNav.show();
+            } else {
+                $loutiNav.hide();
+            }
+            
+            // 高亮当前楼层
+            $louceng.each(function (index, element) {
+                var loucengTop = $louceng.eq(index).offset().top + $(element).height();
+                if (loucengTop > scrollTop) {
+                    $loutiList.removeClass('active');
+                    $loutiList.eq(index).addClass('active');
+                    return false;
                 }
             });
-        })();
-
-        //点击左侧楼层到达对应区域 楼梯效果
-
-        (function louti() {
-            let loutinav = $('#loutinav');
-            let loutili = $('#loutinav ul li').not('.loutilast');
-            let louceng = $('.louceng');
-            let last = $('.loutilast');
-            // 1.拖动滚动条显示隐藏的楼梯
-            $(window).on('scroll', function () {
-                let $top = $(window).scrollTop();
-                if ($top >= 700) {
-                    loutinav.show();
-                } else {
-                    loutinav.hide();
+        }, 100));
+        
+        // 点击楼梯跳转到对应楼层
+        $loutiList.on('click', function () {
+            $(this).addClass('active').siblings('li').removeClass('active');
+            var targetTop = $louceng.eq($(this).index()).offset().top;
+            $('html,body').animate({ scrollTop: targetTop });
+        });
+        
+        // 回到顶部
+        $last.on('click', function () {
+            $('html,body').stop().animate({ scrollTop: 0 });
+        });
+    }
+    
+    /**
+     * 轮播图效果
+     */
+    function initCarousel() {
+        var $imgs = $('.scroll-content li');
+        var $btns = $('.scroll-btn span');
+        var timer = null;
+        var currentIndex = 0;
+        
+        // 鼠标悬停切换
+        $btns.on('mouseover', function () {
+            currentIndex = $(this).index();
+            updateCarousel();
+        });
+        
+        function updateCarousel() {
+            $btns.eq(currentIndex).addClass('active').siblings('span').removeClass('active');
+            $imgs.eq(currentIndex).show().siblings('li').hide();
+        }
+        
+        // 自动播放（可选）
+        function autoPlay() {
+            timer = setInterval(function () {
+                currentIndex = (currentIndex + 1) % $imgs.length;
+                updateCarousel();
+            }, 3000);
+        }
+        
+        // 暂停播放
+        $('.scroll-content, .scroll-btn').on('mouseenter', function () {
+            clearInterval(timer);
+        }).on('mouseleave', function () {
+            autoPlay();
+        });
+        
+        autoPlay();
+    }
+    
+    /**
+     * 工具函数（局部）
+     */
+    var Utils = {
+        throttle: function (func, delay) {
+            var lastTime = 0;
+            return function () {
+                var context = this;
+                var args = arguments;
+                var now = Date.now();
+                if (now - lastTime >= delay) {
+                    lastTime = now;
+                    func.apply(context, args);
                 }
-                //4.拖动滚轮，楼梯和楼层对应 利用楼层的top值进行判断
-                louceng.each(function (index, element) {
-                    //每一个楼层的top值，固定的值。
-                    let $loucengtop = louceng.eq(index).offset().top + $(element).height();
-                    if ($loucengtop > $top) {
-                        loutili.removeClass('active');
-                        loutili.eq(index).addClass('active');
-                        return false;
-                    }
-                });
-            });
-            //2.点击左侧楼梯，显示右侧对应的图层
-            loutili.on('click', function () {
-                let louceng = $('.louceng');
-                $(this).addClass('active').siblings('li').removeClass('active');
-                //获取每一个楼层的top值
-                let $loucengtop = louceng.eq($(this).index()).offset().top;
-                $('html,body').animate({
-                    scrollTop: $loucengtop
-                });
-            });
-            //3.回到顶部
-            last.on('click', function () {
-                $('html,body').stop().animate({
-                    scrollTop: 0
-                });
-            });
-        })();
-
-        //轮播图效果
-
-        (function lunbo() {
-            let imgs = $('.scroll-content li');
-            let btns = $('.scroll-btn span');
-            //给当前点击的span按钮添加点击类           
-            btns.on('mouseover', function () {
-                $(this).addClass('active').siblings('span').removeClass('active');
-                $('.scroll-content li').eq($(this).index()).show().siblings('li').hide();
-            })
-
-        })();
-    })
-})
+            };
+        }
+    };
+    
+    /**
+     * 初始化
+     */
+    function init() {
+        initSearchScroll();
+        initFloorNav();
+        initCarousel();
+    }
+    
+    init();
+});
