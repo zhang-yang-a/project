@@ -22,17 +22,25 @@ require(['config'], function () {//调用配置config配置模块
                             sid: $sid,//把sid传给后端，后端再返回给sid对应的数据
                         }
                     }).done(function (arrdata) {
-                        console.log(arrdata);
-                        $('.sf-pic').attr('src', arrdata.url);
-                        $('.b-pic').attr('src', arrdata.url);
-                        $('h3').html(arrdata.title);
-                        $('.price-jiage').html(arrdata.price);
+                        if (!arrdata) { return; }
+                        // XSS 防护：文本一律用 text()，URL 校验协议后再写入属性
+                        const escapeHtml = (s) => $('<i/>').text(s == null ? '' : String(s)).html();
+                        const safeUrl = (u) => {
+                            u = String(u || '').trim();
+                            return /^(https?:\/\/|\/|\.{1,2}\/)/i.test(u) ? u : '';
+                        };
+                        $('.sf-pic').attr('src', safeUrl(arrdata.url));
+                        $('.b-pic').attr('src', safeUrl(arrdata.url));
+                        $('h3').text(arrdata.title);
+                        $('.price-jiage').text(String(arrdata.price).replace(/[^\d.]/g, ''));
                         //渲染小图下面的产品列表
-                        let piclist = arrdata.urls.split(',');//数组
-                        console.log(piclist);
+                        let piclist = String(arrdata.urls || '').split(',');//数组
                         $picshtml = '';
                         $.each(piclist, function (index, value) {
-                            $picshtml += `<li><img src="${value}" alt=""></li>`
+                            const src = safeUrl(value);
+                            if (src) {
+                                $picshtml += `<li><img src="${escapeHtml(src)}" alt=""></li>`;
+                            }
                         });
                         $('.s-list').html($picshtml);
                     });
@@ -53,7 +61,13 @@ require(['config'], function () {//调用配置config配置模块
                     //第一次加入购物车，创建商品列表，第二次只需要数量累加，提前获取cookie来验证
                     //点击加入购物车按钮，将当前页面商品的sid存放到sidarr数组中，一起存入cookie
                     cartbtn.onclick = function () {
-                         alert('商品添加成功');
+                        // 数量服务端/前端双重限制：只允许 1~10 的整数，防篡改与注入 Cookie
+                        let addnum = parseInt(goodsnum.value, 10);
+                        if (!Number.isInteger(addnum) || addnum < 1) { addnum = 1; }
+                        if (addnum > 10) { addnum = 10; }
+                        goodsnum.value = addnum;
+                        if (!/^\d+$/.test(String(sid))) { return; } // sid 必须是数字
+                        alert('商品添加成功');
                         //当前取出的cookie里面存放sid的数组
                         if (sidarr.indexOf(sid) !== -1) {//第二次只需要数量累加
                             //获取当前sid对应的数量，取出数量，和当前的新的数量进行累加
