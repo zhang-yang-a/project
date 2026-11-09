@@ -3,6 +3,12 @@ require(['config'], function () {//调用配置config配置模块
         const aInput = document.querySelectorAll('form input');
         const pForm = document.querySelector('.regi-btn');
 
+        // CSRF 防护：页面加载时向后端申请 token，所有写操作请求都带上
+        let csrfToken = '';
+        const phpurl = 'http://10.31.155.15/project/php/';
+        $.ajax({ url: phpurl + 'regjiance.php', type: 'GET', dataType: 'json' })
+            .done(function (d) { if (d && d.csrf_token) { csrfToken = d.csrf_token; } });
+
         let usenameflag = true;
         let emailflag = true;
         let passflag = true;
@@ -29,6 +35,7 @@ require(['config'], function () {//调用配置config配置模块
                         type: 'post',
                         data: {
                             xingming: $('#username').val(),
+                            csrf_token: csrfToken,
                         },
                     }).done(function (d) {
                         if (!d) {
@@ -170,6 +177,7 @@ require(['config'], function () {//调用配置config配置模块
                         email: $email.val(),
                         pass: $password.val(),
                         submit: $submit.html(),
+                        csrf_token: csrfToken,
                     },
                 }).done(function (data) {
                     console.log(data);
